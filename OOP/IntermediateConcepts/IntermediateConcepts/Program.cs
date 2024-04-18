@@ -54,6 +54,37 @@ namespace IntermediateConcepts
             double value = double.Parse(Console.ReadLine()!, CultureInfo.InvariantCulture);
 
             Console.WriteLine($"Value to pay: {Price.ConversionProcess(price, value)}");
+
+            // Number 5
+            BankAccount account;
+
+            Console.WriteLine("Enter yor account number and a name (Enter each data):");
+            int countNumber = int.Parse(Console.ReadLine()!);
+            string owner = Console.ReadLine()!;
+
+            Console.WriteLine("Will there be an initial deposit (s/n):");
+            string depositVerify = Console.ReadLine()!;
+
+            if (depositVerify == "s")
+            {
+                Console.WriteLine("Initial deposit amount:");
+                double startedDeposit = double.Parse(Console.ReadLine()!, CultureInfo.InvariantCulture);
+                account = new BankAccount(countNumber, owner, startedDeposit);
+
+            } else
+            {
+                account = new BankAccount(countNumber, owner);
+            }
+
+            Console.WriteLine($"Account data:\n{account.ReturnData()}");
+
+            Console.WriteLine("Enter a deposit:");
+            account.Deposit(double.Parse(Console.ReadLine()!, CultureInfo.InvariantCulture));
+            Console.WriteLine($"Account data:\n{account.ReturnData()}");
+
+            Console.WriteLine("Enter a withdrawal:");
+            account.Withdrawal(double.Parse(Console.ReadLine()!, CultureInfo.InvariantCulture));
+            Console.WriteLine($"Account data:\n{account.ReturnData()}");
         }
     }
 }
